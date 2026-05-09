@@ -1,0 +1,391 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a; 
+    color: #e0e0e0;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+ 
+    background-image: url('fondo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity: 0.15; 
+    z-index: -1; 
+}
+
+#main {
+    transition: margin-left .5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    color: #ffcc00; 
+    margin-top: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+/* ===== SIDEBAR (Menú Lateral) ===== */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: #121212;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    border-right: 2px solid #ffcc00; 
+}
+
+.sidebar-titulo {
+    color: #ffcc00;
+    font-weight: bold;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+    margin-bottom: 10px;
+}
+
+.btn-sidebar {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 15px;
+    color: #e0e0e0;
+    display: block;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-sidebar:hover {
+    background-color: #ffcc00;
+    color: black;
+}
+
+.btn-cerrar {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: #888;
+    text-decoration: none;
+}
+
+#btn-abrir-menu {
+    font-size: 25px;
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    color: #ffcc00;
+    z-index: 900;
+    background: #1e1e1e;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #ffcc00;
+}
+
+/* ===== TABLAS PRINCIPALES (PRECIOS) ===== */
+.contenedor-flex {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap; 
+}
+
+table {
+    background-color: rgba(20, 20, 20, 0.95);
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th {
+    background-color: #ffcc00; 
+    color: black;
+    padding: 10px;
+    border: 1px solid #333;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #2a2a2a;
+}
+
+.subcategoria td {
+    background-color: #333333; 
+    color: #ffcc00; 
+    font-weight: bold;
+}
+
+input {
+    width: 60px;
+    background: #000;
+    color: #ffcc00;
+    border: 1px solid #444;
+    text-align: center;
+    border-radius: 4px;
+}
+
+/* ===== PANEL DE CONTROL ===== */
+.paneles-control-contenedor {
+    display: flex;
+    gap: 20px;
+}
+
+.panel-control {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bloque-post {
+    background: rgba(20, 20, 20, 0.95);
+    border-radius: 8px;
+    border-top: 4px solid #ffcc00; 
+    padding-bottom: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.7);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.titulo-info, .titulo-descuento {
+    background: #ffcc00;
+    color: black;
+    padding: 8px;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.monto-total {
+    color: #ffcc00; 
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.btn-accion {
+    width: 90%;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-copiar { background: #ffcc00; } 
+.btn-reiniciar { background: #555; color: white; } 
+
+/* ===== TABLA DESCUENTOS ===== */
+.tabla-descuento {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.tabla-descuento th {
+    background-color: #000;
+    color: #888;
+    font-size: 0.7em;
+    padding: 8px 2px;
+    border: none;
+}
+
+.tabla-descuento td {
+    padding: 12px 2px;
+    border: 1px solid #2a2a2a;
+    font-weight: bold;
+    font-size: 0.85em;
+    text-align: center;
+}
+
+.num-azul { color: #888 !important; } 
+.num-verde { color: #ffcc00 !important; } 
+
+/* ===== VISTA INFORMACIÓN ===== */
+#vista-info {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.banner-contenedor {
+    width: 100%;
+    max-width: 1000px;
+    margin: 20px auto 30px auto;
+}
+
+.banner-img {
+    width: 100%; 
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255, 204, 0, 0.3));
+}
+
+.grid-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-info {
+    background: rgba(20, 20, 20, 0.95);
+    border-radius: 10px;
+    border-top: 5px solid #ffcc00;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.8);
+    text-align: left;
+}
+
+.card-header {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px 15px;
+    font-weight: bold;
+    font-size: 0.85em;
+    border-bottom: 1px solid #333;
+    text-transform: uppercase;
+    color: #ffcc00;
+}
+
+.card-body {
+    padding: 15px;
+    font-size: 0.9em;
+    line-height: 1.6;
+}
+
+.card-azul {
+    border-top-color: #ffffff; 
+}
+
+.card-azul .card-header {
+    color: #ffffff;
+}
+
+.texto-instruccion {
+    font-weight: bold !important;
+    font-size: 1.1em !important;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    border-bottom: 2px solid #ffcc00;
+    padding-bottom: 10px;
+}
+
+.lista-convenios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-convenios li {
+    font-weight: bold !important;
+    font-size: 0.95em;
+    margin-bottom: 12px;
+    color: #e0e0e0;
+    text-transform: uppercase;
+}
+
+/* ===== BLOQUE FULL TUNING ===== */
+.bloque-full-tuning {
+    border-top: 4px solid #ffcc00 !important; 
+    background: rgba(20, 20, 20, 0.95) !important;           
+    color: #ffffff !important;                
+}
+
+.titulo-full {
+    background: #ffcc00 !important;          
+    color: black !important;
+    padding: 12px;
+    padding-left: 35px; 
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    cursor: pointer;
+}
+
+.titulo-full::before {
+    content: '+';
+    position: absolute;
+    left: 15px; 
+    top: 50%;
+    transform: translateY(-50%); 
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.contenido-full {
+    padding: 20px;
+    text-align: left;
+}
+
+.contenido-full ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contenido-full li {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #e0e0e0 !important; 
+}
+
+.contenido-full li span {
+    color: #ffcc00; 
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.btn-copiar-mini {
+    background: #ffcc00;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 2px 5px;
+    font-size: 10px;
+    transition: 0.2s;
+}
+
+.btn-copiar-mini:hover {
+    background: #ffffff;
+    transform: scale(1.1);
+}
+
+/* Ajuste para que la tabla no se vea apretada */
+.tabla-descuento th, .tabla-descuento td {
+    padding: 8px 1px; 
+}
